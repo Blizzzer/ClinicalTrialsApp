@@ -1,0 +1,21 @@
+<div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="patientsType">
+  <label ngbButtonLabel class="btn-primary">
+    <input ngbButton type="radio" [value]="1" (click)="getPatients()"> Not Placebo
+  </label>
+  <label ngbButtonLabel class="btn-primary">
+    <input ngbButton type="radio" [value]=2> Placebo
+  </label>
+  <label ngbButtonLabel class="btn-primary">
+    <input ngbButton type="radio" [value]=0> Both
+  </label>
+</div>
+<h2>List of patients</h2>
+<ul class="patients">
+  <li *ngFor="let patient of patients">
+    <span class="badge">{{patient.id}}</span>
+    <a routerLink="/patients/{{patient.id}}">
+      {{patient.name}} {{patient.surname}}
+    </a>
+  </li>
+</ul>
+

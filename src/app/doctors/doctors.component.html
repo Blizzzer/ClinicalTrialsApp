@@ -1,0 +1,7 @@
+<h2>List of doctors</h2>
+<ul class="doctors">
+  <li *ngFor="let doctor of doctors">
+    <span class="badge">{{doctor.id}}</span>
+    {{doctor.name}} {{doctor.surname}}
+  </li>
+</ul>

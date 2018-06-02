@@ -1,0 +1,70 @@
+<h1><div>Name: {{patient.name}}</div></h1>
+<h3><div>Surname: {{patient.surname}}</div></h3>
+<h3><div>Current Dosage: {{patient.currentDosage}}</div></h3>
+<app-observations></app-observations>
+
+<div id="Lists" class="btn-group" role="group" aria-label="List buttons">
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isDosagesCollapsed = !isDosagesCollapsed; isObservationsCollapsed = true"
+          [attr.aria-expanded]="!isDosagesCollapsed" aria-controls="collapseExample">
+    Show Dosages
+  </button>
+
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isObservationsCollapsed = !isObvservationsCollapsed; isDosagesCollapsed = true"
+          [attr.aria-expanded]="!isObservationsCollapsed" aria-controls="collapseExample">
+    Show Observations
+  </button>
+</div>
+
+<div id="Addings" class="btn-group" role="group" aria-label="Adding buttons">
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingDosageCollapsed = !isAddingDosageCollapsed; isAddingObservationCollapsed = true"
+          [attr.aria-expanded]="!isAddingDosageCollapsed" aria-controls="collapseExample">
+    Add new doctor
+  </button>
+
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingObseravationCollapsed = !isAddingObservationCollapsed; isAddingDosageCollapsed= true"
+          [attr.aria-expanded]="!isAddingObservationCollapsed" aria-controls="collapseExample">
+    Add existing doctor
+  </button>
+
+</div>
+
+<div id="addingPatientCollapse" [ngbCollapse]="isAddingPatientCollapsed">
+  <div class="card">
+    <div class="card-body">
+      Adding new patient
+    </div>
+  </div>
+</div>
+
+<div id="addingNewDoctorCollapse" [ngbCollapse]="isAddingNewDoctorCollapsed">
+  <div class="card">
+    <div class="card-body">
+      Adding new doctor
+    </div>
+  </div>
+</div>
+
+<div id="addingExistingDoctorCollapse" [ngbCollapse]="isAddingExistingDoctorCollapsed">
+  <div class="card">
+    <div class="card-body">
+      Adding existing doctor
+    </div>
+  </div>
+</div>
+
+<div id="doctorCollapse" [ngbCollapse]="isDoctorCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <app-doctors></app-doctors>
+    </div>
+  </div>
+</div>
+
+
+<div id="patientCollapse" [ngbCollapse]="isPatientCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <app-patients></app-patients>
+    </div>
+  </div>
+</div>

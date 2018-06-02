@@ -1,0 +1,10 @@
+<h2>List of trials</h2>
+<ul class="trials">
+  <li *ngFor="let trial of trials">
+    <span class="badge">{{trial.id}}</span>
+    <a routerLink="/trials/{{trial.id}}">
+      {{trial.name}}
+    </a>
+  </li>
+</ul>
+
