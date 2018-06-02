@@ -28,43 +28,35 @@
 
 </div>
 
-<div id="addingPatientCollapse" [ngbCollapse]="isAddingPatientCollapsed">
+<div id="addingDosageCollapse" [ngbCollapse]="isAddingDosageCollapsed">
   <div class="card">
     <div class="card-body">
-      Adding new patient
+      Adding new dosage
     </div>
   </div>
 </div>
 
-<div id="addingNewDoctorCollapse" [ngbCollapse]="isAddingNewDoctorCollapsed">
+<div id="addingObservationCollapse" [ngbCollapse]="isAddingObservationCollapsed">
   <div class="card">
     <div class="card-body">
-      Adding new doctor
+      Adding new observation
     </div>
   </div>
 </div>
 
-<div id="addingExistingDoctorCollapse" [ngbCollapse]="isAddingExistingDoctorCollapsed">
+<div id="doctorCollapse" [ngbCollapse]="isDosagesCollapsed">
   <div class="card">
     <div class="card-body">
-      Adding existing doctor
-    </div>
-  </div>
-</div>
-
-<div id="doctorCollapse" [ngbCollapse]="isDoctorCollapsed">
-  <div class="card">
-    <div class="card-body">
-      <app-doctors></app-doctors>
+      Dosages list
     </div>
   </div>
 </div>
 
 
-<div id="patientCollapse" [ngbCollapse]="isPatientCollapsed">
+<div id="patientCollapse" [ngbCollapse]="isObservationsCollapsed">
   <div class="card">
     <div class="card-body">
-      <app-patients></app-patients>
+      <app-observations></app-observations>
     </div>
   </div>
 </div>

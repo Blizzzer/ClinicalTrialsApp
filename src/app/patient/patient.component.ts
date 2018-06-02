@@ -8,6 +8,10 @@ import {DataService} from '../data.service';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
+  public isDosagesCollapsed = true;
+  public isObservationsCollapsed = true;
+  public isAddingDosageCollapsed = true;
+  public isAddingObservationCollapsed = true;
   patient: Patient;
   constructor(private dataService: DataService) { }
 
