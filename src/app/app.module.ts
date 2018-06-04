@@ -15,6 +15,7 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import {DataService} from './data.service';
 import { ObservationsComponent } from './observations/observations.component';
 import { ObservationComponent } from './observation/observation.component';
+import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component';
 
 
 
@@ -28,7 +29,8 @@ import { ObservationComponent } from './observation/observation.component';
     PatientsComponent,
     DoctorsComponent,
     ObservationsComponent,
-    ObservationComponent
+    ObservationComponent,
+    AddNewDoctorComponent
   ],
   imports: [
     NgbModule.forRoot(),

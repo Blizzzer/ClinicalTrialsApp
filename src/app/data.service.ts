@@ -13,6 +13,7 @@ import {Trial} from './Trial';
 import {trial} from './mock-trial';
 import {ObservationAbbreviation} from './ObservationAbbreviation';
 import {observationsToChoose} from './mock-observations';
+import {Doctor} from './Doctor';
 
 
 @Injectable()
@@ -36,6 +37,9 @@ export class DataService {
   }
   getObservations(): Observable<ObservationAbbreviation[]>{
     return of(observationsToChoose);
+  }
+  public postNewDoctor(doctorToSend: Doctor) {
+    console.log(JSON.stringify(doctorToSend));
   }
 
 }
