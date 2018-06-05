@@ -11,6 +11,7 @@ import {observationsToChoose} from './mock-observations';
 import {Doctor} from './Doctor';
 import {Configuration} from './constants';
 import {DoctorToSend} from './DoctorToSend';
+import {PatientToSend} from './PatientToSend';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -46,6 +47,12 @@ export class DataService {
     return this.http.post(this.actionUrl + 'doctors', doctorToSend)
       .toPromise()
       .then(() => doctorToSend);
+  }
+  public postPatient(patientToSend: PatientToSend): Promise<PatientToSend> {
+    console.log(JSON.stringify(patientToSend));
+    return this.http.post(this.actionUrl + 'doctors', patientToSend)
+      .toPromise()
+      .then(() => patientToSend);
   }
 
 }

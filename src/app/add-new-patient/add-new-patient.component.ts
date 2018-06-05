@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DoctorToSend} from '../DoctorToSend';
+import {PatientToSend} from '../PatientToSend';
+import {DataService} from '../data.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-add-new-patient',
@@ -9,14 +11,22 @@ import {DoctorToSend} from '../DoctorToSend';
 export class AddNewPatientComponent implements OnInit {
   name: string;
   surname: string;
-  specialisation: string;
+  birthDate: string;
   ssn: string;
-  title: string;
+  isPlacebo: number;
   trialId: number;
-  doctorToSend: DoctorToSend;
-  constructor() { }
+  patientToSend: PatientToSend;
+  constructor(private _dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getTrialId();
+  }
+  getTrialId(): void {
+    this.trialId = +this.route.snapshot.paramMap.get('id');
+  }
+  goAdd(): void {
+    this.patientToSend = new PatientToSend(this.name, this.surname, this.birthDate, this.isPlacebo, this.ssn, this.trialId);
+    this._dataService.postPatient(this.patientToSend);
   }
 
 }

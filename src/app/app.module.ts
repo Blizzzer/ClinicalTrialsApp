@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { TrialsComponent } from './trials/trials.component';
@@ -22,7 +21,6 @@ import {Configuration} from './constants';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +33,7 @@ import { AddNewPatientComponent } from './add-new-patient/add-new-patient.compon
     ObservationsComponent,
     ObservationComponent,
     AddNewDoctorComponent,
-    AddNewPatientComponent
+    AddNewPatientComponent,
   ],
   imports: [
     NgbModule.forRoot(),

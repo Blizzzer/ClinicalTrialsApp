@@ -16,7 +16,6 @@ export class PatientComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   getPatient(): void {
-    this.dataService.getPatient().subscribe(patient => this.patient = patient);
   }
 
   ngOnInit() {
