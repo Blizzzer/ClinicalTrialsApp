@@ -1,6 +1,6 @@
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Patient name</span>
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">Patient name</font></span>
   </div>
   <input type="text" class="form-control" id="name" required
          [(ngModel)]="name" name="name" style="text-align:center">
@@ -8,7 +8,7 @@
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Patient surname</span>
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">Patient surname</font></span>
   </div>
   <input type="text" class="form-control" id="surname" required
          [(ngModel)]="surname" name="surname" style="text-align:center">
@@ -16,14 +16,14 @@
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Birth Date</span>
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">Birth date</font></span>
   </div>
   <ngb-datepicker #dp [(ngModel)]="birthDateModel" (navigate)="date = $event.next" style="font-size: 70%"></ngb-datepicker>
 </div>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">SSN</span>
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">SSN</font></span>
   </div>
   <input type="number" class="form-control" id="ssn" required
          [(ngModel)]="ssn" name="ssn" style="text-align:center">
