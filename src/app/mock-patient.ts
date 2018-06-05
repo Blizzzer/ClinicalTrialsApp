@@ -1,3 +1,4 @@
+/*
 import {Patient} from './Patient';
 
 export const patient: Patient = {
@@ -6,3 +7,4 @@ export const patient: Patient = {
   surname: 'Apolinarski',
   currentDosage: '12 mg'
 };
+*/

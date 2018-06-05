@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +18,8 @@ import {DataService} from './data.service';
 import { ObservationsComponent } from './observations/observations.component';
 import { ObservationComponent } from './observation/observation.component';
 import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component';
+import {Configuration} from './constants';
+import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 
 
 
@@ -30,15 +34,18 @@ import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component
     DoctorsComponent,
     ObservationsComponent,
     ObservationComponent,
-    AddNewDoctorComponent
+    AddNewDoctorComponent,
+    AddNewPatientComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpModule,
   ],
-  providers: [DataService],
+  providers: [DataService, Configuration],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

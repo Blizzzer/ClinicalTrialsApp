@@ -1,3 +1,4 @@
+/*
 import {TrialAbbreviation} from './TrialAbbreviation';
 
 
@@ -13,3 +14,4 @@ export const trialsToChoose: TrialAbbreviation[] = [
   { id: 19, name: 'Magma' },
   { id: 20, name: 'Tornado' }
 ];
+*/

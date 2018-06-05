@@ -1,4 +1,9 @@
 <h2>List of doctors</h2>
+<div>
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getDoctors()">
+    Update
+  </button>
+</div>
 <ul class="doctors">
   <li *ngFor="let doctor of doctors">
     <span class="badge">{{doctor.id}}</span>

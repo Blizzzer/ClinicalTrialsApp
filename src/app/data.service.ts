@@ -1,45 +1,51 @@
+import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 import { Observable} from 'rxjs/Observable';
-import {TrialAbbreviation} from './TrialAbbreviation';
-import {trialsToChoose} from './mock-trials';
+
 import {of} from 'rxjs/observable/of';
-import {PatientAbbreviation} from './PatientAbbreviation';
-import {patientsToChoose} from './mock-patients';
-import {DoctorAbbreviation} from './DoctorAbbreviation';
-import {doctorsToChoose} from './mock-doctors';
 import {Patient} from './Patient';
-import {patient} from './mock-patient';
-import {Trial} from './Trial';
-import {trial} from './mock-trial';
+
 import {ObservationAbbreviation} from './ObservationAbbreviation';
 import {observationsToChoose} from './mock-observations';
 import {Doctor} from './Doctor';
+import {Configuration} from './constants';
+import {DoctorToSend} from './DoctorToSend';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 
 @Injectable()
 export class DataService {
-
-  constructor() { }
-  getTrials(): Observable<TrialAbbreviation[]> {
-    return of(trialsToChoose);
+  private actionUrl: string;
+  constructor(private http: HttpClient, private _configuration: Configuration) {
+  this.actionUrl = _configuration.Server;
   }
-  getPatients(patientType: number): Observable<PatientAbbreviation[]> {
-    return of(patientsToChoose);
+  getTrials<Trial>(isArchived: number): Observable<Trial> {
+    return this.http.get<Trial>(this.actionUrl + 'trials?isArchived=' + isArchived);
   }
-  getDoctors(): Observable<DoctorAbbreviation[]> {
-    return of(doctorsToChoose);
+  getPatients<Patient>(patientType: number, trialId: number): Observable<Patient> {
+    return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId);
   }
-  getPatient(): Observable<Patient> {
-    return of(patient);
+  getDoctors<Doctor>(trialId: number): Observable<Doctor> {
+    return this.http.get<Doctor>(this.actionUrl + 'doctors?trialId=' + trialId);
   }
-  getTrial(): Observable<Trial> {
-    return of(trial);
+  getPatient(): void {
+    console.log('get patient');
   }
-  getObservations(): Observable<ObservationAbbreviation[]>{
+  getTrial<Trial>(id: number): Observable<Trial> {
+    return this.http.get<Trial>(this.actionUrl + 'trials/' + id);
+  }
+  getObservations(): Observable<ObservationAbbreviation[]> {
     return of(observationsToChoose);
   }
-  public postNewDoctor(doctorToSend: Doctor) {
+  public postDoctor(doctorToSend: DoctorToSend): Promise<DoctorToSend> {
     console.log(JSON.stringify(doctorToSend));
+    return this.http.post(this.actionUrl + 'doctors', doctorToSend)
+      .toPromise()
+      .then(() => doctorToSend);
   }
 
 }

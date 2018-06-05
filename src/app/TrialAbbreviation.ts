@@ -1,4 +1,6 @@
 export class TrialAbbreviation {
   public id: number;
-  public name: string;
+  public abbreviation: string;
+  public description: string;
+  public isArchived: string;
 }

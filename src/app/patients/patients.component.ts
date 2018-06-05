@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientAbbreviation} from '../PatientAbbreviation';
 import {DataService} from '../data.service';
+import {Patient} from '../Patient';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-patients',
@@ -8,14 +9,18 @@ import {DataService} from '../data.service';
   styleUrls: ['./patients.component.css']
 })
 export class PatientsComponent implements OnInit {
-  patients: PatientAbbreviation[];
+  patients: Patient[];
   patientsType = 0;
-  constructor(private dataService: DataService) { }
+  trialId: number;
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
   getPatients(): void {
-    this.dataService.getPatients(this.patientsType).subscribe(patientsToChoose => this.patients = patientsToChoose);
+    this.dataService.getPatients(this.patientsType, this.trialId).subscribe((patients: Patient[]) => this.patients = patients);
   }
-
+  getTrialId(): void {
+    this.trialId = +this.route.snapshot.paramMap.get('id');
+  }
   ngOnInit() {
+    this.getTrialId();
     this.getPatients();
   }
 

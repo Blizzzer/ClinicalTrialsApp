@@ -1,7 +1,12 @@
 
-<h1><div>Name: {{trial.name}}</div></h1>
-<h3><div>Phase: {{trial.phase}}</div></h3>
+<h1><div>Name: {{trial.studyTitle}}</div></h1>
+<h3><div>Current phase: {{trial.phase}}</div></h3>
 <h3><div>Responsible Party: {{trial.responsibleParty}}</div></h3>
+
+<button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAdditionalInfoCollapsed = !isAdditionalInfoCollapsed"
+        [attr.aria-expanded]="!isAdditionalInfoCollapsed" aria-controls="collapseExample">
+  Show additional info
+</button>
 
 <div id="Lists" class="btn-group" role="group" aria-label="List buttons">
   <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isDoctorCollapsed = !isDoctorCollapsed; isPatientCollapsed = true"
@@ -16,26 +21,35 @@
 </div>
 
 <div id="Addings" class="btn-group" role="group" aria-label="Adding buttons">
-  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingNewDoctorCollapsed = !isAddingNewDoctorCollapsed; isAddingExistingDoctorCollapsed = true; isAddingPatientCollapsed = true"
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingNewDoctorCollapsed = !isAddingNewDoctorCollapsed; isAddingPatientCollapsed = true"
           [attr.aria-expanded]="!isAddingNewDoctorCollapsed" aria-controls="collapseExample">
     Add new doctor
   </button>
 
-  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingExistingDoctorCollapsed = !isAddingExistingDoctorCollapsed; isAddingNewDoctorCollapsed= true; isAddingPatientCollapsed = true"
-          [attr.aria-expanded]="!isAddingExistingDoctorCollapsed" aria-controls="collapseExample">
-    Add existing doctor
-  </button>
-
-  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingPatientCollapsed = !isAddingPatientCollapsed; isAddingNewDoctorCollapsed= true; isAddingExistingDoctorCollapsed= true"
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingPatientCollapsed = !isAddingPatientCollapsed; isAddingNewDoctorCollapsed= true"
           [attr.aria-expanded]="!isAddingPatientCollapsed" aria-controls="collapseExample">
     Add new patient
   </button>
 </div>
 
+<div id="additionalInfoCollapse" [ngbCollapse]="isAdditionalInfoCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <div>Start date: {{trial.startDate}}</div>
+      <div>Masking: {{trial.masking}}</div>
+      <div>Estimated end date: {{trial.estimatedEndDate}}</div>
+      <div>Study description: {{trial.studyDescription}}</div>
+      <div>Treatment description: {{trial.treatmentDescription}}</div>
+      <div>Eligibility criterias: {{trial.eligibilityCriterias}}</div>
+      <div>Contacts and locations: {{trial.contactAndLocations}}</div>
+    </div>
+  </div>
+</div>
+
 <div id="addingPatientCollapse" [ngbCollapse]="isAddingPatientCollapsed">
   <div class="card">
     <div class="card-body">
-      Adding new patient
+      <app-add-new-patient></app-add-new-patient>
     </div>
   </div>
 </div>
@@ -48,13 +62,6 @@
   </div>
 </div>
 
-<div id="addingExistingDoctorCollapse" [ngbCollapse]="isAddingExistingDoctorCollapsed">
-  <div class="card">
-    <div class="card-body">
-      Adding existing doctor
-    </div>
-  </div>
-</div>
 
 <div id="doctorCollapse" [ngbCollapse]="isDoctorCollapsed">
   <div class="card">

@@ -1,5 +1,4 @@
-export class Doctor {
-  public id: number;
+export class DoctorToSend {
   public title: string;
   public name: string;
   public surname: string;
@@ -7,9 +6,12 @@ export class Doctor {
   public specialisation: string;
   public trialId: number;
 
-  constructor(name: string, surname: string, specialisation: string) {
+  public constructor(name: string, surname: string, specialisation: string, title: string, ssn: string, trialId: number) {
     this.name = name;
     this.surname = surname;
     this.specialisation = specialisation;
+    this.ssn = ssn;
+    this.title = title;
+    this.trialId = trialId;
   }
 }
