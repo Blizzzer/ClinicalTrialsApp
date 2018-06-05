@@ -1,9 +1,21 @@
+<button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingTrialCollapsed = !isAddingTrialCollapsed"
+        [attr.aria-expanded]="!isAddingTrialCollapsed" aria-controls="collapseExample">
+  Add new trial
+</button>
 
 <button type="button" class="btn btn-outline-primary  btn-lg" (click)="onClick()"
         [attr.aria-expanded]="!showArchived" aria-controls="collapseExample" placement="right"
         ngbPopover="Now archived trials are shown">
   Archived
 </button>
+
+<div id="addingTrial" [ngbCollapse]="isAddingTrialCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <app-add-trial></app-add-trial>
+    </div>
+  </div>
+</div>
 <h2>List of trials</h2>
 <div class="trials">
   <div *ngFor="let trial of trials" class="alert alert-secondary" style="text-align:center">

@@ -5,7 +5,7 @@ import {TrialsComponent} from '../trials/trials.component';
 import {TrialComponent} from '../trial/trial.component';
 import {DoctorComponent} from '../doctor/doctor.component';
 import {PatientComponent} from '../patient/patient.component';
-import {Patient} from '../Patient';
+import {Patient} from '../DataObjects/Patient';
 
 const routes: Routes = [
   { path: '', redirectTo: '/trials', pathMatch: 'full' }, {

@@ -4,14 +4,15 @@ import 'rxjs/add/operator/map';
 import { Observable} from 'rxjs/Observable';
 
 import {of} from 'rxjs/observable/of';
-import {Patient} from './Patient';
+import {Patient} from './DataObjects/Patient';
 
-import {ObservationAbbreviation} from './ObservationAbbreviation';
-import {observationsToChoose} from './mock-observations';
-import {Doctor} from './Doctor';
+import {ObservationAbbreviation} from './DataObjects/ObservationAbbreviation';
+import {observationsToChoose} from './MockData/mock-observations';
+import {Doctor} from './DataObjects/Doctor';
 import {Configuration} from './constants';
-import {DoctorToSend} from './DoctorToSend';
-import {PatientToSend} from './PatientToSend';
+import {DoctorToSend} from './DataObjects/DoctorToSend';
+import {PatientToSend} from './DataObjects/PatientToSend';
+import {TrialToSend} from './DataObjects/TrialToSend';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,6 +48,9 @@ export class DataService {
     return this.http.post(this.actionUrl + 'doctors', doctorToSend)
       .toPromise()
       .then(() => doctorToSend);
+  }
+  public postTrial(trialToSend: TrialToSend) {
+    console.log(JSON.stringify(trialToSend));
   }
   public postPatient(patientToSend: PatientToSend): Promise<PatientToSend> {
     console.log(JSON.stringify(patientToSend));

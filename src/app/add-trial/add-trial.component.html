@@ -1,0 +1,70 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Study title</span>
+  </div>
+  <input type="text" class="form-control" id="studyTitle" required
+         [(ngModel)]="studyTitle" name="studyTitle" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Responsible party</span>
+  </div>
+  <input type="text" class="form-control" id="responsibleParty" required
+         [(ngModel)]="responsibleParty" name="responsibleParty" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Masking</span>
+  </div>
+  <input type="text" class="form-control" id="masking" required
+         [(ngModel)]="masking" name="masking">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Start Date</span>
+  </div>
+  <ngb-datepicker #dp [(ngModel)]="startDateModel" (navigate)="date = $event.next" style="font-size: 50%"></ngb-datepicker>
+  <div class="input-group-prepend" style="margin-left: 5%">
+    <span class="input-group-text">Estimated end date</span>
+  </div>
+  <ngb-datepicker #dp [(ngModel)]="estimatedEndDateModel" (navigate)="date = $event.next" style="font-size: 50%"></ngb-datepicker>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Study description</span>
+  </div>
+  <textarea type="text" class="form-control" id="studyDescription" required
+            [(ngModel)]="studyDescription" name="studyDescription"></textarea>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Treatment description</span>
+  </div>
+  <textarea type="text" class="form-control" id="treatmentDescription" required
+            [(ngModel)]="treatmentDescription" name="treatmentDescription"></textarea>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Eligibility criterias</span>
+  </div>
+  <textarea type="text" class="form-control" id="eligibiltyCriterias" required
+            [(ngModel)]="eligibilityCriterias" name="eligibiltyCriterias"></textarea>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Contacts and locations</span>
+  </div>
+  <textarea type="text" class="form-control" id="contactsAndLocations" required
+            [(ngModel)]="contactsAndLocations" name="contactsAndLocations"></textarea>
+</div>
+<div class="input-group mb-3">
+    <button type="button" class="btn btn-outline-primary  btn-lg" (click)="goAdd()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      Add Doctor
+    </button>
+</div>
+

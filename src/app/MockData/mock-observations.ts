@@ -1,4 +1,4 @@
-import {ObservationAbbreviation} from './ObservationAbbreviation';
+import {ObservationAbbreviation} from '../DataObjects/ObservationAbbreviation';
 
 
 export const observationsToChoose: ObservationAbbreviation[] = [

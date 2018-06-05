@@ -19,6 +19,7 @@ import { ObservationComponent } from './observation/observation.component';
 import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component';
 import {Configuration} from './constants';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
+import { AddTrialComponent } from './add-trial/add-trial.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AddNewPatientComponent } from './add-new-patient/add-new-patient.compon
     ObservationComponent,
     AddNewDoctorComponent,
     AddNewPatientComponent,
+    AddTrialComponent,
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService} from '../data.service';
-import {Trial} from '../Trial';
+import {Trial} from '../DataObjects/Trial';
 
 @Component({
   selector: 'app-trials',
@@ -10,6 +10,7 @@ import {Trial} from '../Trial';
 export class TrialsComponent implements OnInit {
   trials: Trial[];
   showArchived = false;
+  isAddingTrialCollapsed = true;
   constructor(private dataService: DataService) {
   }
   getTrials(): void {

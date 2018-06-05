@@ -1,4 +1,4 @@
-import {DoctorAbbreviation} from './DoctorAbbreviation';
+import {DoctorAbbreviation} from '../DataObjects/DoctorAbbreviation';
 
 
 export const doctorsToChoose: DoctorAbbreviation[] = [

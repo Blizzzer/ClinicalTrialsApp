@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
-import {ObservationAbbreviation} from '../ObservationAbbreviation';
+import {ObservationAbbreviation} from '../DataObjects/ObservationAbbreviation';
 
 @Component({
   selector: 'app-observations',

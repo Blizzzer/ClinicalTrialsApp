@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
-import {DoctorToSend} from '../DoctorToSend';
+import {DoctorToSend} from '../DataObjects/DoctorToSend';
 import {ActivatedRoute} from '@angular/router';
+import {DoctorsComponent} from '../doctors/doctors.component';
 
 @Component({
   selector: 'app-add-new-doctor',
@@ -9,6 +10,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./add-new-doctor.component.css']
 })
 export class AddNewDoctorComponent implements OnInit {
+
+  @Input() doctorsList: DoctorsComponent;
   name: string;
   surname: string;
   specialisation: string;
@@ -29,6 +32,7 @@ export class AddNewDoctorComponent implements OnInit {
   goAdd(): void {
     this.doctorToSend = new DoctorToSend(this.name, this.surname, this.specialisation, this.title, this.ssn, this.trialId);
     this._dataService.postDoctor(this.doctorToSend);
+    this.doctorsList.goUpdate();
   }
 
 }

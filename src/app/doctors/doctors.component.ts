@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
-import {Trial} from '../Trial';
+import {Trial} from '../DataObjects/Trial';
 import {ActivatedRoute} from '@angular/router';
-import {Doctor} from '../Doctor';
+import {Doctor} from '../DataObjects/Doctor';
 
 @Component({
   selector: 'app-doctors',

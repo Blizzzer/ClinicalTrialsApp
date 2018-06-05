@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientToSend} from '../PatientToSend';
+import {PatientToSend} from '../DataObjects/PatientToSend';
 import {DataService} from '../data.service';
 import {ActivatedRoute} from '@angular/router';
 
