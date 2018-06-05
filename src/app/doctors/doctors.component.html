@@ -1,12 +1,14 @@
 <h2>List of doctors</h2>
 <div>
-  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getDoctors()">
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getDoctors()" style="margin-bottom: 10px">
     Update
   </button>
 </div>
-<ul class="doctors">
-  <li *ngFor="let doctor of doctors">
-    <span class="badge">{{doctor.id}}</span>
+<div class="doctors">
+  <div *ngFor="let doctor of doctors" class="alert alert-secondary style"
+       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
+    <a routerLink="/doctors/{{doctor.id}}">
     {{doctor.name}} {{doctor.surname}}
-  </li>
-</ul>
+    </a>
+  </div>
+</div>

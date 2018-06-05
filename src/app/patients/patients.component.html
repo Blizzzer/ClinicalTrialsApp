@@ -1,14 +1,46 @@
-<div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="patientsType">
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]="1" (click)="getPatients()"> Not Placebo
-  </label>
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]=0> Placebo
-  </label>
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]=2> Both
-  </label>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div id="Placebos" class="btn-group" role="group" aria-label="Placebo buttons">
+        <button id="notPlaceboButton" type="button" class="btn btn-outline-primary  btn-lg" (click)="patientsType = 0; getPatients();">
+          Not placebo group
+        </button>
+        <button id="placeboButton" type="button" class="btn btn-outline-primary  btn-lg" (click)="patientsType = 1; getPatients();">
+          Placebo group
+        </button>
+        <button id="bothButton" type="button" class="btn btn-outline-primary  btn-lg" (click)="patientsType = 2; getPatients();">
+          Both groups
+        </button>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div style="text-align: right">
+        <div id="Phases" class="btn-group" role="group" aria-label="Phases buttons">
+          <button id="phase1Button" type="button" class="btn btn-outline-primary  btn-lg" (click)="phaseToAsk = 1; getPatients();">
+            Phase 1
+          </button>
+          <button id="phase2Button" type="button" class="btn btn-outline-primary  btn-lg" (click)="phaseToAsk = 2; getPatients();">
+            Phase 2
+          </button>
+          <button id="phase3Button" type="button" class="btn btn-outline-primary  btn-lg" (click)="phaseToAsk = 3; getPatients();">
+            Phase 3
+          </button>
+          <button id="phase4Button" type="button" class="btn btn-outline-primary  btn-lg" (click)="phaseToAsk = 4; getPatients();">
+            Phase 4
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<div style="text-align: right">
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getPatients()" style="margin-top: 10px">
+    Update
+  </button>
+</div>
+
 <h2>List of patients</h2>
 <ul class="patients">
   <li *ngFor="let patient of patients">

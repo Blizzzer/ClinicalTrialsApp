@@ -20,6 +20,7 @@ import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component
 import {Configuration} from './constants';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 import { AddTrialComponent } from './add-trial/add-trial.component';
+import { DangerZoneTrialComponent } from './danger-zone-trial/danger-zone-trial.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AddTrialComponent } from './add-trial/add-trial.component';
     AddNewDoctorComponent,
     AddNewPatientComponent,
     AddTrialComponent,
+    DangerZoneTrialComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -43,7 +45,7 @@ import { AddTrialComponent } from './add-trial/add-trial.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule,
+    HttpModule
   ],
   providers: [DataService, Configuration],
   bootstrap: [AppComponent]

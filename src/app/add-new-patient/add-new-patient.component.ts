@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PatientToSend} from '../DataObjects/PatientToSend';
 import {DataService} from '../data.service';
 import {ActivatedRoute} from '@angular/router';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-new-patient',
@@ -12,10 +13,13 @@ export class AddNewPatientComponent implements OnInit {
   name: string;
   surname: string;
   birthDate: string;
+  birthDateModel: NgbDateStruct;
   ssn: string;
-  isPlacebo: number;
   trialId: number;
   patientToSend: PatientToSend;
+  monthS: string;
+  dayS: string;
+  date: {year: number, month: number};
   constructor(private _dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,7 +29,18 @@ export class AddNewPatientComponent implements OnInit {
     this.trialId = +this.route.snapshot.paramMap.get('id');
   }
   goAdd(): void {
-    this.patientToSend = new PatientToSend(this.name, this.surname, this.birthDate, this.isPlacebo, this.ssn, this.trialId);
+    if (this.birthDateModel.month <= 9) {
+      this.monthS = '0' + this.birthDateModel.month;
+    } else {
+      this.monthS = String(this.birthDateModel.month);
+    }
+    if (this.birthDateModel.day <= 9) {
+      this.dayS = '0' + this.birthDateModel.day;
+    } else {
+      this.dayS = String(this.birthDateModel.day);
+    }
+    this.birthDate = this.birthDateModel.year + '-' + this.monthS + '-' + this.dayS;
+    this.patientToSend = new PatientToSend(this.name, this.surname, this.birthDate, this.ssn, this.trialId);
     this._dataService.postPatient(this.patientToSend);
   }
 

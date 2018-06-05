@@ -2,13 +2,13 @@ export class Trial {
   public id: number;
   public studyTitle: string;
   public phase: number;
-  public isArchived: string;
+  public isArchived: number;
   public startDate: string;
-  public masking: string;
+  public masking: number;
   public responsibleParty: string;
   public studyDescription: string;
   public treatmentDescription: string;
   public eligibilityCriterias: string;
-  public contactAndLocations: string;
+  public contactsAndLocations: string;
   public estimatedEndDate: string;
 }

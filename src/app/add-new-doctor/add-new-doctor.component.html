@@ -1,42 +1,45 @@
 <div class="input-group mb-3">
-
-  <form name = "NewDoctorForm">
-    <div class="form-group">
-      <label for="name">Doctor name</label>
-      <input type="text" class="form-control" id="name" required
-             [(ngModel)]="name" name="name">
-    </div>
-
-    <div class="form-group">
-      <label for="surname">Doctor surname</label>
-      <input type="text" class="form-control" id="surname" required
-             [(ngModel)]="surname" name="surname">
-    </div>
-
-    <div class="form-group">
-    <label for="specialisation">Specialisation</label>
-    <input type="text" class="form-control" id="specialisation" required
-           [(ngModel)]="specialisation" name="specialisation">
-    </div>
-
-    <div class="form-group">
-      <label for="title">Prefix</label>
-      <input type="text" class="form-control" id="title" required
-             [(ngModel)]="title" name="title">
-    </div>
-
-    <div class="form-group">
-      <label for="ssn">SSN</label>
-      <input type="text" class="form-control" id="ssn" required
-             [(ngModel)]="ssn" name="ssn">
-    </div>
-
-    <button type="button" class="btn btn-outline-primary  btn-lg" (click)="goAdd()"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-      Add Doctor
-    </button>
-  </form>
-
-
-
+  <div class="input-group-prepend">
+    <span class="input-group-text">Doctor name</span>
+  </div>
+  <input type="text" class="form-control" id="name" required
+         [(ngModel)]="name" name="name" style="text-align:center">
 </div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Doctor surname</span>
+  </div>
+  <input type="text" class="form-control" id="surname" required
+         [(ngModel)]="surname" name="surname" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Specialisation</span>
+  </div>
+  <input type="text" class="form-control" id="specialisation" required
+         [(ngModel)]="specialisation" name="specialisation" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Prefix</span>
+  </div>
+  <input type="text" class="form-control" id="title" required
+         [(ngModel)]="title" name="title" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">SSN</span>
+  </div>
+  <input type="number" class="form-control" id="ssn" required
+         [(ngModel)]="ssn" name="ssn" style="text-align:center">
+</div>
+
+
+<button type="button" class="btn btn-outline-primary  btn-lg" (click)="goAdd()"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+  Add Doctor
+</button>

@@ -22,12 +22,36 @@ export class AddTrialComponent implements OnInit {
   public trialToSend: TrialToSend;
   public startDate: string;
   public estimatedEndDate: string;
+  private monthSD: string;
+  private daySD: string;
+  private monthED: string;
+  private dayED: string;
   date: {year: number, month: number};
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
   }
   goAdd(): void {
+    if (this.startDateModel.month <= 9) {
+      this.monthSD = '0' + this.startDateModel.month;
+    } else {
+      this.monthSD = String(this.startDateModel.month);
+    }
+    if (this.startDateModel.day <= 9) {
+      this.daySD = '0' + this.startDateModel.day;
+    } else {
+      this.daySD = String(this.startDateModel.day);
+    }
+    if (this.estimatedEndDateModel.month <= 9) {
+      this.monthED = '0' + this.estimatedEndDateModel.month;
+    } else {
+      this.monthED = String(this.estimatedEndDateModel.month);
+    }
+    if (this.estimatedEndDateModel.day <= 9) {
+      this.dayED = '0' + this.estimatedEndDateModel.day;
+    } else {
+      this.dayED = String(this.estimatedEndDateModel.day);
+    }
     this.startDate = this.startDateModel.year + '-' + this.startDateModel.month + '-' + this.startDateModel.day;
     this.estimatedEndDate = this.estimatedEndDateModel.year + '-' + this.estimatedEndDateModel.month + '-' + this.estimatedEndDateModel.day;
     this.trialToSend = new TrialToSend(this.studyTitle, this.studyDescription, this.treatmentDescription,

@@ -1,26 +1,28 @@
 <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAddingTrialCollapsed = !isAddingTrialCollapsed"
-        [attr.aria-expanded]="!isAddingTrialCollapsed" aria-controls="collapseExample">
+        [attr.aria-expanded]="!isAddingTrialCollapsed" aria-controls="collapseExample" style="margin-bottom: 10px">
   Add new trial
 </button>
 
 <button type="button" class="btn btn-outline-primary  btn-lg" (click)="onClick()"
         [attr.aria-expanded]="!showArchived" aria-controls="collapseExample" placement="right"
-        ngbPopover="Now archived trials are shown">
+        ngbPopover="Now archived trials are shown"  style="margin-bottom: 10px">
   Archived
 </button>
 
 <div id="addingTrial" [ngbCollapse]="isAddingTrialCollapsed">
-  <div class="card">
-    <div class="card-body">
-      <app-add-trial></app-add-trial>
-    </div>
+  <div class="jumbotron">
+
+    <app-add-trial></app-add-trial>
   </div>
 </div>
-<h2>List of trials</h2>
-<div class="trials">
-  <div *ngFor="let trial of trials" class="alert alert-secondary" style="text-align:center">
-    <a routerLink="/trials/{{trial.id}}">
-      {{trial.studyTitle}}
-    </a>
+<div class="jumbotron">
+  <h2>List of trials</h2>
+  <div class="trials">
+    <div *ngFor="let trial of trials" class="alert alert-secondary"
+         style="text-align:center; border-color: cadetblue; border-width: 2px">
+      <a routerLink="/trials/{{trial.id}}">
+        {{trial.studyTitle}}
+      </a>
+    </div>
   </div>
 </div>

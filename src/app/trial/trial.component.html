@@ -1,8 +1,7 @@
-
+<div class="jumbotron">
 <h1><div>Name: {{trial.studyTitle}}</div></h1>
 <h3><div>Current phase: {{trial.phase}}</div></h3>
 <h3><div>Responsible Party: {{trial.responsibleParty}}</div></h3>
-
 <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isAdditionalInfoCollapsed = !isAdditionalInfoCollapsed"
         [attr.aria-expanded]="!isAdditionalInfoCollapsed" aria-controls="collapseExample">
   Show additional info
@@ -31,53 +30,55 @@
     Add new patient
   </button>
 </div>
+</div>
 
 <div id="additionalInfoCollapse" [ngbCollapse]="isAdditionalInfoCollapsed">
-  <div class="card">
-    <div class="card-body">
+  <div class="jumbotron">
       <div>Start date: {{trial.startDate}}</div>
       <div>Masking: {{trial.masking}}</div>
       <div>Estimated end date: {{trial.estimatedEndDate}}</div>
       <div>Study description: {{trial.studyDescription}}</div>
       <div>Treatment description: {{trial.treatmentDescription}}</div>
       <div>Eligibility criterias: {{trial.eligibilityCriterias}}</div>
-      <div>Contacts and locations: {{trial.contactAndLocations}}</div>
-    </div>
+      <div>Contacts and locations: {{trial.contactsAndLocations}}</div>
+
   </div>
 </div>
 
 <div id="addingPatientCollapse" [ngbCollapse]="isAddingPatientCollapsed">
-  <div class="card">
-    <div class="card-body">
+  <div class="jumbotron">
       <app-add-new-patient></app-add-new-patient>
-    </div>
   </div>
 </div>
 
 <div id="addingNewDoctorCollapse" [ngbCollapse]="isAddingNewDoctorCollapsed">
-  <div class="card">
-    <div class="card-body">
+  <div class="jumbotron">
       <app-add-new-doctor></app-add-new-doctor>
-    </div>
+
   </div>
 </div>
 
 
 <div id="doctorCollapse" [ngbCollapse]="isDoctorCollapsed">
-  <div class="card">
-    <div class="card-body">
+  <div class="jumbotron">
       <app-doctors></app-doctors>
-    </div>
   </div>
 </div>
 
 
 <div id="patientCollapse" [ngbCollapse]="isPatientCollapsed">
-  <div class="card">
-    <div class="card-body">
-      <app-patients></app-patients>
-    </div>
+  <div class="jumbotron">
+    <app-patients></app-patients>
   </div>
 </div>
+
+<div class="jumbotron">
+  <div class="card" style="border-color: crimson; border-width: 3px">
+    <div class="card-body">
+  <app-danger-zone-trial></app-danger-zone-trial>
+  </div>
+  </div>
+</div>
+
 
 

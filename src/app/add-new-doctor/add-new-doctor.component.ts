@@ -32,7 +32,6 @@ export class AddNewDoctorComponent implements OnInit {
   goAdd(): void {
     this.doctorToSend = new DoctorToSend(this.name, this.surname, this.specialisation, this.title, this.ssn, this.trialId);
     this._dataService.postDoctor(this.doctorToSend);
-    this.doctorsList.goUpdate();
   }
 
 }
