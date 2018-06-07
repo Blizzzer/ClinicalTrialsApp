@@ -15,6 +15,7 @@ export class DosagesComponent implements OnInit {
 
   ngOnInit() {
     this.getPatientID();
+    this.getDosages();
   }
 
   getPatientID(): void {

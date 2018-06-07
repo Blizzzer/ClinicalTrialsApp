@@ -23,6 +23,7 @@ import { AddTrialComponent } from './add-trial/add-trial.component';
 import { DangerZoneTrialComponent } from './danger-zone-trial/danger-zone-trial.component';
 import { DosagesComponent } from './dosages/dosages.component';
 import { AddNewDosageComponent } from './add-new-dosage/add-new-dosage.component';
+import { AddNewObservationComponent } from './add-new-observation/add-new-observation.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AddNewDosageComponent } from './add-new-dosage/add-new-dosage.component
     DangerZoneTrialComponent,
     DosagesComponent,
     AddNewDosageComponent,
+    AddNewObservationComponent,
   ],
   imports: [
     NgbModule.forRoot(),

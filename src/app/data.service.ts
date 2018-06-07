@@ -12,6 +12,7 @@ import {DoctorToSend} from './DataObjects/DoctorToSend';
 import {PatientToSend} from './DataObjects/PatientToSend';
 import {TrialToSend} from './DataObjects/TrialToSend';
 import {DosageToSend} from './DataObjects/DosageToSend';
+import {ObservationToSend} from './DataObjects/ObservationToSend';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -46,7 +47,7 @@ export class DataService {
   }
   getDosages<Dosage>(patientId: number): Observable<Dosage> {
     console.log('GET; ' + this.actionUrl + 'dosages?patientId=' + patientId);
-    return this.http.get<Dosage>(this.actionUrl + 'dosages?trialId=' + patientId);
+    return this.http.get<Dosage>(this.actionUrl + 'dosages?patientId=' + patientId);
   }
   getPatient<PatientFull>(id: number): Observable<PatientFull> {
     return this.http.get<PatientFull>(this.actionUrl + 'patients/' + id);
@@ -54,8 +55,9 @@ export class DataService {
   getTrial<Trial>(id: number): Observable<Trial> {
     return this.http.get<Trial>(this.actionUrl + 'trials/' + id);
   }
-  getObservations(): Observable<ObservationAbbreviation[]> {
-    return of(observationsToChoose);
+  getObservations<ObservationToSend>(patientId: number): Observable<ObservationToSend> {
+    console.log('GET; ' + this.actionUrl + 'observations?patientId=' + patientId);
+    return this.http.get<ObservationToSend>(this.actionUrl + 'observations?patientId=' + patientId);
   }
   public postDoctor(doctorToSend: DoctorToSend): Promise<DoctorToSend> {
     console.log(JSON.stringify(doctorToSend));
@@ -87,9 +89,15 @@ export class DataService {
   }
   public postDosage(dosageToSend: DosageToSend): Promise<DosageToSend> {
     console.log(JSON.stringify(dosageToSend));
-    return this.http.post(this.actionUrl + 'dosage', dosageToSend)
+    return this.http.post(this.actionUrl + 'dosages', dosageToSend)
       .toPromise()
       .then(() => dosageToSend);
+  }
+  public postObservation(observationToSend: ObservationToSend): Promise<ObservationToSend> {
+    console.log(JSON.stringify(observationToSend));
+    return this.http.post(this.actionUrl + 'observations', observationToSend)
+      .toPromise()
+      .then(() => observationToSend);
   }
 
 }

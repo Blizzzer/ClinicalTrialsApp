@@ -1,6 +1,10 @@
 <h1><div>Name: {{patient.name}}</div></h1>
 <h3><div>Surname: {{patient.surname}}</div></h3>
 <h3><div>Current Dosage: {{patient.currentDosage}}</div></h3>
+<h3><div>SSN: {{patient.ssn}}</div></h3>
+<h3><div>Birth Date: {{patient.birthDate}}</div></h3>
+<h3><div>Participating in phase {{patient.phase}} of trial</div></h3>
+
 
 <div id="Lists" class="btn-group" role="group" aria-label="List buttons">
   <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isDosagesCollapsed = !isDosagesCollapsed; isObservationsCollapsed = true"
@@ -27,10 +31,12 @@
 
 </div>
 
+
+
 <div id="addingDosageCollapse" [ngbCollapse]="isAddingDosageCollapsed">
   <div class="card">
     <div class="card-body">
-      Adding new dosage
+      <app-add-new-dosage></app-add-new-dosage>
     </div>
   </div>
 </div>
@@ -46,7 +52,7 @@
 <div id="dosagesCollapse" [ngbCollapse]="isDosagesCollapsed">
   <div class="card">
     <div class="card-body">
-      Dosages list
+      <app-dosages></app-dosages>
     </div>
   </div>
 </div>

@@ -1,0 +1,20 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">Doctor name and surname</font></span>
+  </div>
+  <input type="text" class="form-control" id="doctorName" required
+         [(ngModel)]="doctorName" name="doctorName" style="text-align:center">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">Observation text</font></span>
+  </div>
+  <textarea type="text" class="form-control" id="text" required
+            [(ngModel)]="text" name="text"></textarea>
+</div>
+
+<button type="button" class="btn btn-outline-primary  btn-lg" (click)="goAdd()"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+  Add Observation
+</button>
