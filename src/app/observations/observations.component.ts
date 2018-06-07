@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
-import {ObservationAbbreviation} from '../DataObjects/ObservationAbbreviation';
+import {ActivatedRoute} from '@angular/router';
+import {Observation} from '../DataObjects/Observation';
 
 @Component({
   selector: 'app-observations',
@@ -8,13 +9,17 @@ import {ObservationAbbreviation} from '../DataObjects/ObservationAbbreviation';
   styleUrls: ['./observations.component.css']
 })
 export class ObservationsComponent implements OnInit {
-  observations: ObservationAbbreviation[];
-  constructor(private dataService: DataService) { }
+  observations: Observation[];
+  patientId: number;
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
   getObservations(): void {
-    this.dataService.getObservations().subscribe(observationsToChoose => this.observations = observationsToChoose);
+    this.dataService.getObservations<Observation[]>(this.patientId).subscribe((observationsToChoose: Observation[]) => this.observations = observationsToChoose);
   }
-
+  getPatientID(): void {
+    this.patientId = +this.route.snapshot.paramMap.get('id');
+  }
   ngOnInit() {
+    this.getPatientID();
     this.getObservations();
   }
 }

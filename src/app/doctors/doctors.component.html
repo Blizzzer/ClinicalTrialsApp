@@ -4,11 +4,16 @@
     Update
   </button>
 </div>
-<div class="doctors">
-  <div *ngFor="let doctor of doctors" class="alert alert-secondary style"
-       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
-    <a routerLink="/doctors/{{doctor.id}}">
-    {{doctor.title}} {{doctor.name}} {{doctor.surname}}
-    </a>
-  </div>
+<div *ngFor="let doctor of doctors" class="alert alert-secondary style"
+           style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
+
+<ngb-accordion #acc="ngbAccordion">
+  <ngb-panel title="{{doctor.title}} {{doctor.name}} {{doctor.surname}}">
+    <ng-template ngbPanelContent>
+      <div   style="text-align: center">Specialisation: {{doctor.specialisation}}</div>
+      <div style="text-align: center">SSN: {{doctor.ssn}}</div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
 </div>
+

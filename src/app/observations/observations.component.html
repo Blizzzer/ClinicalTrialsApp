@@ -1,8 +1,14 @@
-<h2>List of observations</h2>
-<ul class="observations">
-  <li *ngFor="let observation of observations">
-    <span class="badge">{{observation.date}}</span>
-     {{observation.doctorName}} {{observation.doctorSurname}}
-  </li>
-</ul>
+<div>
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getObservations()" style="margin-bottom: 10px">
+    Update
+  </button>
+</div>
+<div class="dosage">
+  <div *ngFor="let observation of observations" class="alert alert-secondary style"
+       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
+    <a>
+      {{observation.doctorId}} {{observation.date}}
+    </a>
+  </div>
+</div>
 

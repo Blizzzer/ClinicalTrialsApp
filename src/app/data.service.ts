@@ -55,9 +55,9 @@ export class DataService {
   getTrial<Trial>(id: number): Observable<Trial> {
     return this.http.get<Trial>(this.actionUrl + 'trials/' + id);
   }
-  getObservations<ObservationToSend>(patientId: number): Observable<ObservationToSend> {
+  getObservations<Observation>(patientId: number): Observable<Observation> {
     console.log('GET; ' + this.actionUrl + 'observations?patientId=' + patientId);
-    return this.http.get<ObservationToSend>(this.actionUrl + 'observations?patientId=' + patientId);
+    return this.http.get<Observation>(this.actionUrl + 'observations?patientId=' + patientId);
   }
   public postDoctor(doctorToSend: DoctorToSend): Promise<DoctorToSend> {
     console.log(JSON.stringify(doctorToSend));
