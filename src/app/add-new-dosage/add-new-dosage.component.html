@@ -1,0 +1,12 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="background-color: cadetblue"><font color="white">New dosage value</font></span>
+  </div>
+  <input type="text" class="form-control" id="dosage" required
+         [(ngModel)]="dosage" name="dosage" style="text-align:center">
+</div>
+
+<button type="button" class="btn btn-outline-primary  btn-lg" (click)="goAdd()"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+  Add Dosage
+</button>

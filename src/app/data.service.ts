@@ -11,6 +11,7 @@ import {Configuration} from './constants';
 import {DoctorToSend} from './DataObjects/DoctorToSend';
 import {PatientToSend} from './DataObjects/PatientToSend';
 import {TrialToSend} from './DataObjects/TrialToSend';
+import {DosageToSend} from './DataObjects/DosageToSend';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -43,8 +44,12 @@ export class DataService {
     console.log('GET; ' + this.actionUrl + 'doctors?trialId=' + trialId);
     return this.http.get<Doctor>(this.actionUrl + 'doctors?trialId=' + trialId);
   }
-  getPatient(): void {
-    console.log('get patient');
+  getDosages<Dosage>(patientId: number): Observable<Dosage> {
+    console.log('GET; ' + this.actionUrl + 'dosages?patientId=' + patientId);
+    return this.http.get<Dosage>(this.actionUrl + 'dosages?trialId=' + patientId);
+  }
+  getPatient<PatientFull>(id: number): Observable<PatientFull> {
+    return this.http.get<PatientFull>(this.actionUrl + 'patients/' + id);
   }
   getTrial<Trial>(id: number): Observable<Trial> {
     return this.http.get<Trial>(this.actionUrl + 'trials/' + id);
@@ -79,6 +84,12 @@ export class DataService {
     return this.http.post(this.actionUrl + 'patients', patientToSend)
       .toPromise()
       .then(() => patientToSend);
+  }
+  public postDosage(dosageToSend: DosageToSend): Promise<DosageToSend> {
+    console.log(JSON.stringify(dosageToSend));
+    return this.http.post(this.actionUrl + 'dosage', dosageToSend)
+      .toPromise()
+      .then(() => dosageToSend);
   }
 
 }

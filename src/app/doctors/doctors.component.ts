@@ -14,7 +14,7 @@ export class DoctorsComponent implements OnInit {
   trialId: number;
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
   public getDoctors(): void {
-    this.dataService.getDoctors<Doctor[]>(this.trialId).subscribe((doctors: Doctor[]) => this.doctors = doctors);
+    this.dataService.getDoctors<Doctor[]>(this.trialId).subscribe((doctors: Doctor[]) => {this.doctors = doctors});
   }
 
   getTrialId(): void {

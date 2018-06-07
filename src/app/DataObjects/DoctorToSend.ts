@@ -1,4 +1,4 @@
-export class DoctorToSend {
+export class DoctorToSend { // Doctor for post purpose
   public title: string;
   public name: string;
   public surname: string;

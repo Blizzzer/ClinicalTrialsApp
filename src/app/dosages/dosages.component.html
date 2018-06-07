@@ -1,0 +1,14 @@
+<h2>List of dosages</h2>
+<div>
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getDosages()" style="margin-bottom: 10px">
+    Update
+  </button>
+</div>
+<div class="dosage">
+  <div *ngFor="let dosage of dosages" class="alert alert-secondary style"
+       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
+    <a>
+      {{dosage.date}} {{dosage.dosage}}
+    </a>
+  </div>
+</div>

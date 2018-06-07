@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Patient} from '../DataObjects/Patient';
 import {DataService} from '../data.service';
+import {PatientFull} from '../DataObjects/PatientFull';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-patient',
@@ -12,13 +13,19 @@ export class PatientComponent implements OnInit {
   public isObservationsCollapsed = true;
   public isAddingDosageCollapsed = true;
   public isAddingObservationCollapsed = true;
-  patient: Patient;
-  constructor(private dataService: DataService) { }
-
+  patient: PatientFull;
+  patientId: number;
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
   getPatient(): void {
+    this.dataService.getPatient<PatientFull>(this.patientId).subscribe((patient: PatientFull) => this.patient = patient);
+  }
+
+  getPatientID(): void {
+    this.patientId = +this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+    this.getPatientID();
     this.getPatient();
   }
 

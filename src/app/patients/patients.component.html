@@ -42,12 +42,11 @@
 </div>
 
 <h2>List of patients</h2>
-<ul class="patients">
-  <li *ngFor="let patient of patients">
-    <span class="badge">{{patient.id}}</span>
+<div class="patients">
+  <div *ngFor="let patient of patients" class="alert alert-secondary style"
+       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
     <a routerLink="/patients/{{patient.id}}">
       {{patient.name}} {{patient.surname}}
     </a>
-  </li>
-</ul>
-
+  </div>
+</div>

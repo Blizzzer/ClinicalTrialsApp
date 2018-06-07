@@ -8,7 +8,7 @@
   <div *ngFor="let doctor of doctors" class="alert alert-secondary style"
        style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
     <a routerLink="/doctors/{{doctor.id}}">
-    {{doctor.name}} {{doctor.surname}}
+    {{doctor.title}} {{doctor.name}} {{doctor.surname}}
     </a>
   </div>
 </div>
