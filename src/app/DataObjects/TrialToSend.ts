@@ -8,11 +8,12 @@ export class TrialToSend {
   public estimatedEndDate: string;
   public eligibiltyCriterias: string;
   public contactsAndLocations: string;
+  private password: string;
 
   public constructor(
     studyTitle: string, studyDescription: string, treatmentDescription: string,
     startDate: string, responsibleParty: string, masking: number,
-    estimatedEndDate: string, eligibilityCriterias: string, contactsAndLocations: string
+    estimatedEndDate: string, eligibilityCriterias: string, contactsAndLocations: string, password: string
   ) {
     this.contactsAndLocations = contactsAndLocations;
     this.eligibiltyCriterias = eligibilityCriterias;
@@ -23,5 +24,6 @@ export class TrialToSend {
     this.studyTitle = studyTitle;
     this.treatmentDescription = treatmentDescription;
     this.startDate = startDate;
+    this.password = password;
   }
 }

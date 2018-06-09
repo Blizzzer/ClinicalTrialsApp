@@ -14,8 +14,10 @@ export class TrialComponent implements OnInit {
   public isAddingNewDoctorCollapsed = true;
   public isAddingPatientCollapsed = true;
   public isAdditionalInfoCollapsed = true;
+  public isGroupsCollapsed = true;
   public trial: Trial;
   public trialId: number;
+
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   getTrial(): void {

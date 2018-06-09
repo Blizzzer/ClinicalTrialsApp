@@ -1,14 +1,18 @@
+<h2>List of observations</h2>
 <div>
   <button type="button" class="btn btn-outline-primary  btn-lg" (click)="getObservations()" style="margin-bottom: 10px">
     Update
   </button>
 </div>
-<div class="dosage">
-  <div *ngFor="let observation of observations" class="alert alert-secondary style"
-       style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
-    <a>
-      {{observation.doctorId}} {{observation.date}}
-    </a>
-  </div>
+<div *ngFor="let observation of observations" class="alert alert-secondary style"
+     style="text-align:center; border-color: cadetblue; border-width: 2px; font-size: 140%">
+
+  <ngb-accordion #acc="ngbAccordion">
+    <ngb-panel title="{{observation.doctorInfo}} {{observation.date}}">
+      <ng-template ngbPanelContent>
+        <div   style="text-align: center">Observation text: {{observation.text}}</div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>
 

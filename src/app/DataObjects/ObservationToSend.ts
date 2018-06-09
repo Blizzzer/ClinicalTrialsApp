@@ -1,10 +1,10 @@
 export class ObservationToSend {
   public patientId: number;
-  public doctorId: string;
+  public doctorInfo: string;
   public text: string;
-  public constructor(patientId: number, doctorId: string, text: string) {
+  public constructor(patientId: number, doctorInfo: string, text: string) {
     this.patientId = patientId;
-    this.doctorId = doctorId;
+    this.doctorInfo = doctorInfo;
     this.text = text;
   }
 }

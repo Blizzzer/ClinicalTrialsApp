@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {DataService} from '../data.service';
-import {DoctorToSend} from '../DataObjects/DoctorToSend';
 import {TrialToSend} from '../DataObjects/TrialToSend';
 
 @Component({
@@ -22,6 +21,7 @@ export class AddTrialComponent implements OnInit {
   public trialToSend: TrialToSend;
   public startDate: string;
   public estimatedEndDate: string;
+  public password: string;
   private monthSD: string;
   private daySD: string;
   private monthED: string;
@@ -52,11 +52,11 @@ export class AddTrialComponent implements OnInit {
     } else {
       this.dayED = String(this.estimatedEndDateModel.day);
     }
-    this.startDate = this.startDateModel.year + '-' + this.startDateModel.month + '-' + this.startDateModel.day;
-    this.estimatedEndDate = this.estimatedEndDateModel.year + '-' + this.estimatedEndDateModel.month + '-' + this.estimatedEndDateModel.day;
+    this.startDate = this.startDateModel.year + '-' + this.monthSD + '-' + this.daySD;
+    this.estimatedEndDate = this.estimatedEndDateModel.year + '-' + this.monthED + '-' + this.dayED;
     this.trialToSend = new TrialToSend(this.studyTitle, this.studyDescription, this.treatmentDescription,
       this.startDate, this.responsibleParty, this.masking,
-      this.estimatedEndDate, this.eligibilityCriterias, this.contactsAndLocations);
+      this.estimatedEndDate, this.eligibilityCriterias, this.contactsAndLocations, this.password);
     this._dataService.postTrial(this.trialToSend);
   }
 }

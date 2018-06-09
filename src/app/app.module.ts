@@ -24,6 +24,7 @@ import { DangerZoneTrialComponent } from './danger-zone-trial/danger-zone-trial.
 import { DosagesComponent } from './dosages/dosages.component';
 import { AddNewDosageComponent } from './add-new-dosage/add-new-dosage.component';
 import { AddNewObservationComponent } from './add-new-observation/add-new-observation.component';
+import { PasswordInputComponent } from './password-input/password-input.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AddNewObservationComponent } from './add-new-observation/add-new-observ
     DosagesComponent,
     AddNewDosageComponent,
     AddNewObservationComponent,
+    PasswordInputComponent,
   ],
   imports: [
     NgbModule.forRoot(),

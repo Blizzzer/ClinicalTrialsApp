@@ -30,6 +30,10 @@
     Add new patient
   </button>
 </div>
+  <button type="button" class="btn btn-outline-primary  btn-lg" (click)="isGroupsCollapsed = !isGroupsCollapsed"
+          [attr.aria-expanded]="!isGroupsCollapsed" aria-controls="collapseExample">
+    Show groups
+  </button>
 </div>
 
 <div id="additionalInfoCollapse" [ngbCollapse]="isAdditionalInfoCollapsed">
@@ -71,6 +75,13 @@
     <app-patients></app-patients>
   </div>
 </div>
+
+<div id="groupsCollapse" [ngbCollapse]="isGroupsCollapsed">
+  <div class="jumbotron">
+    <app-password-input></app-password-input>
+  </div>
+</div>
+
 
 <div class="jumbotron">
   <div class="card" style="border-color: crimson; border-width: 3px">

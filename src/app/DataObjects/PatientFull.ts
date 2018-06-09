@@ -5,6 +5,6 @@ export class PatientFull { // Patient abbreviation for list purpose
   public ssn: number;
   public birthDate: string;
   public phase: number;
-  public isPlacebo: number;
+  public group: number;
   public currentDosage: string;
 }

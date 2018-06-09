@@ -3,16 +3,14 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable} from 'rxjs/Observable';
 
-import {of} from 'rxjs/observable/of';
-
-import {ObservationAbbreviation} from './DataObjects/ObservationAbbreviation';
-import {observationsToChoose} from './MockData/mock-observations';
 import {Configuration} from './constants';
 import {DoctorToSend} from './DataObjects/DoctorToSend';
 import {PatientToSend} from './DataObjects/PatientToSend';
 import {TrialToSend} from './DataObjects/TrialToSend';
 import {DosageToSend} from './DataObjects/DosageToSend';
 import {ObservationToSend} from './DataObjects/ObservationToSend';
+import {Password} from './DataObjects/Password';
+import {ResponseMSG} from './DataObjects/Response';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -37,9 +35,9 @@ export class DataService {
     console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId + '&phase=' + phase);
     return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId + '&phase=' + phase);
   }
-  getPatientsWithBoth<Patient>(patientType: number, trialId: number, phase: number, isPlacebo: number): Observable<Patient> {
-    console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&isPlacebo=' + isPlacebo);
-    return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&isPlacebo=' + isPlacebo);
+  getPatientsWithBoth<Patient>(patientType: number, trialId: number, phase: number, group: number): Observable<Patient> {
+    console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&group=' + group);
+    return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&group=' + group);
   }
   getDoctors<Doctor>(trialId: number): Observable<Doctor> {
     console.log('GET; ' + this.actionUrl + 'doctors?trialId=' + trialId);
@@ -67,7 +65,7 @@ export class DataService {
   }
   public postTrial(trialToSend: TrialToSend): Promise<TrialToSend>  {
     console.log(JSON.stringify(trialToSend));
-    return this.http.post(this.actionUrl + 'doctors', trialToSend)
+    return this.http.post(this.actionUrl + 'trials', trialToSend)
       .toPromise()
       .then(() => trialToSend);
   }
@@ -98,6 +96,13 @@ export class DataService {
     return this.http.post(this.actionUrl + 'observations', observationToSend)
       .toPromise()
       .then(() => observationToSend);
+  }
+  public showGroups(password: Password): Promise<ResponseMSG> {
+    console.log(JSON.stringify(password));
+    return this.http.post(this.actionUrl + 'trials/password', password)
+      .toPromise()
+      .then((data) => data,
+        (err) => err);
   }
 
 }
