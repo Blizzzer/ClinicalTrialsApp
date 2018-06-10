@@ -9,18 +9,28 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  public isDosagesCollapsed = true;
-  public isObservationsCollapsed = true;
+  protected isDosagesCollapsed = true;
+  protected isObservationsCollapsed = true;
   public isAddingDosageCollapsed = true;
-  public isAddingObservationCollapsed = true;
-  patient: PatientFull;
-  patientId: number;
+  protected isAddingObservationCollapsed = true;
+  protected patient: PatientFull;
+  private patientId: number;
+  protected patientGroup: string;
+  private static groupConvert(group: number): string {
+    if (group === 0) {
+      return 'A';
+    } else if (group === 1) {
+      return 'B';
+    }
+  }
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
-  getPatient(): void {
-    this.dataService.getPatient<PatientFull>(this.patientId).subscribe((patient: PatientFull) => this.patient = patient);
+  protected getPatient(): void {
+    this.dataService.getPatient<PatientFull>(this.patientId).subscribe((patient: PatientFull) => {this.patient = patient;
+    this.patientGroup = PatientComponent.groupConvert(this.patient.group);
+    });
   }
 
-  getPatientID(): void {
+  private getPatientID(): void {
     this.patientId = +this.route.snapshot.paramMap.get('id');
   }
 
@@ -28,5 +38,4 @@ export class PatientComponent implements OnInit {
     this.getPatientID();
     this.getPatient();
   }
-
 }

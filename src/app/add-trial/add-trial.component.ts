@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {DataService} from '../data.service';
 import {TrialToSend} from '../DataObjects/TrialToSend';
+import {DoctorToSend} from '../DataObjects/DoctorToSend';
 
 @Component({
   selector: 'app-add-trial',
@@ -9,29 +10,31 @@ import {TrialToSend} from '../DataObjects/TrialToSend';
   styleUrls: ['./add-trial.component.css']
 })
 export class AddTrialComponent implements OnInit {
-  public studyTitle: string;
-  public studyDescription: string;
-  public treatmentDescription: string;
-  public startDateModel: NgbDateStruct;
-  public responsibleParty: string;
-  public masking: number;
-  public estimatedEndDateModel: NgbDateStruct;
-  public eligibilityCriterias: string;
-  public contactsAndLocations: string;
-  public trialToSend: TrialToSend;
-  public startDate: string;
-  public estimatedEndDate: string;
-  public password: string;
+  protected studyTitle: string;
+  protected studyDescription: string;
+  protected treatmentDescription: string;
+  protected startDateModel: NgbDateStruct;
+  protected responsibleParty: string;
+  protected masking: number;
+  protected estimatedEndDateModel: NgbDateStruct;
+  protected eligibilityCriterias: string;
+  protected contactsAndLocations: string;
+  private trialToSend: TrialToSend;
+  private startDate: string;
+  private estimatedEndDate: string;
+  protected password: string;
   private monthSD: string;
   private daySD: string;
   private monthED: string;
   private dayED: string;
-  date: {year: number, month: number};
+  protected date: {year: number, month: number};
+  @Output() toggle: EventEmitter<null> = new EventEmitter();
+  @Output() added: EventEmitter<null> = new EventEmitter();
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
   }
-  goAdd(): void {
+  protected goAdd(): void {
     if (this.startDateModel.month <= 9) {
       this.monthSD = '0' + this.startDateModel.month;
     } else {
@@ -54,9 +57,14 @@ export class AddTrialComponent implements OnInit {
     }
     this.startDate = this.startDateModel.year + '-' + this.monthSD + '-' + this.daySD;
     this.estimatedEndDate = this.estimatedEndDateModel.year + '-' + this.monthED + '-' + this.dayED;
-    this.trialToSend = new TrialToSend(this.studyTitle, this.studyDescription, this.treatmentDescription,
-      this.startDate, this.responsibleParty, this.masking,
-      this.estimatedEndDate, this.eligibilityCriterias, this.contactsAndLocations, this.password);
-    this._dataService.postTrial(this.trialToSend);
+    if (this.studyTitle === '') {
+      alert('Fill all input fields before adding!');
+    } else {
+      this.trialToSend = new TrialToSend(this.studyTitle, this.studyDescription, this.treatmentDescription,
+        this.startDate, this.responsibleParty, this.masking,
+        this.estimatedEndDate, this.eligibilityCriterias, this.contactsAndLocations, this.password);
+      this._dataService.postTrial(this.trialToSend).then((data: null) => this.added.emit());
+      this.toggle.emit();
+    }
   }
 }

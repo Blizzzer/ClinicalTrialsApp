@@ -13,15 +13,15 @@ import {Phase} from '../DataObjects/Phase';
 })
 export class PatientsComponent implements OnInit {
   private actionUrl: string;
-  patients: Patient[];
-  patientsType = 2;
-  phaseToAsk: number;
-  trialId: number;
+  protected patients: Patient[];
+  protected patientsType = 2;
+  protected phaseToAsk: number;
+  private trialId: number;
   constructor(private dataService: DataService, private route: ActivatedRoute,
               private http: HttpClient, private _configuration: Configuration) {
     this.actionUrl = _configuration.Server;
   }
-  getPatients(): void {
+  public getPatients(): void {
     if (this.patientsType === 2) {
       this.dataService.getPatientsWithPhase(this.patientsType, this.trialId, this.phaseToAsk)
         .subscribe((patients: Patient[]) => this.patients = patients);
@@ -30,10 +30,10 @@ export class PatientsComponent implements OnInit {
         .subscribe((patients: Patient[]) => this.patients = patients);
     }
   }
-  getStandardPatients(): void {
+  private getStandardPatients(): void {
     this.dataService.getPatients(this.patientsType, this.trialId).subscribe((patients: Patient[]) => this.patients = patients);
   }
-  getTrialId(): void {
+  private getTrialId(): void {
     this.trialId = +this.route.snapshot.paramMap.get('id');
   }
   ngOnInit() {

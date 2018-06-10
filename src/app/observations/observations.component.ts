@@ -9,13 +9,14 @@ import {Observation} from '../DataObjects/Observation';
   styleUrls: ['./observations.component.css']
 })
 export class ObservationsComponent implements OnInit {
-  observations: Observation[];
-  patientId: number;
+  protected observations: Observation[];
+  private patientId: number;
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
-  getObservations(): void {
-    this.dataService.getObservations<Observation[]>(this.patientId).subscribe((observationsToChoose: Observation[]) => this.observations = observationsToChoose);
+  public getObservations(): void {
+    this.dataService.getObservations<Observation[]>(this.patientId)
+      .subscribe((observationsToChoose: Observation[]) => this.observations = observationsToChoose);
   }
-  getPatientID(): void {
+  private getPatientID(): void {
     this.patientId = +this.route.snapshot.paramMap.get('id');
   }
   ngOnInit() {

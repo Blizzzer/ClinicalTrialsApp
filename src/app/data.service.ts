@@ -23,37 +23,37 @@ export class DataService {
   constructor(private http: HttpClient, private _configuration: Configuration) {
   this.actionUrl = _configuration.Server;
   }
-  getTrials<Trial>(isArchived: number): Observable<Trial> {
+  public getTrials<Trial>(isArchived: number): Observable<Trial> {
     console.log('GET; ' + this.actionUrl + 'trials?isArchived=' + isArchived);
     return this.http.get<Trial>(this.actionUrl + 'trials?isArchived=' + isArchived);
   }
-  getPatients<Patient>(patientType: number, trialId: number): Observable<Patient> {
+  public getPatients<Patient>(patientType: number, trialId: number): Observable<Patient> {
     console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId);
     return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId);
   }
-  getPatientsWithPhase<Patient>(patientType: number, trialId: number, phase: number): Observable<Patient> {
+  public getPatientsWithPhase<Patient>(patientType: number, trialId: number, phase: number): Observable<Patient> {
     console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId + '&phase=' + phase);
     return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId + '&phase=' + phase);
   }
-  getPatientsWithBoth<Patient>(patientType: number, trialId: number, phase: number, group: number): Observable<Patient> {
+  public getPatientsWithBoth<Patient>(patientType: number, trialId: number, phase: number, group: number): Observable<Patient> {
     console.log('GET; ' + this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&group=' + group);
     return this.http.get<Patient>(this.actionUrl + 'patients?trialId=' + trialId  + '&phase=' + phase + '&group=' + group);
   }
-  getDoctors<Doctor>(trialId: number): Observable<Doctor> {
+  public getDoctors<Doctor>(trialId: number): Observable<Doctor> {
     console.log('GET; ' + this.actionUrl + 'doctors?trialId=' + trialId);
     return this.http.get<Doctor>(this.actionUrl + 'doctors?trialId=' + trialId);
   }
-  getDosages<Dosage>(patientId: number): Observable<Dosage> {
+  public getDosages<Dosage>(patientId: number): Observable<Dosage> {
     console.log('GET; ' + this.actionUrl + 'dosages?patientId=' + patientId);
     return this.http.get<Dosage>(this.actionUrl + 'dosages?patientId=' + patientId);
   }
-  getPatient<PatientFull>(id: number): Observable<PatientFull> {
+  public getPatient<PatientFull>(id: number): Observable<PatientFull> {
     return this.http.get<PatientFull>(this.actionUrl + 'patients/' + id);
   }
-  getTrial<Trial>(id: number): Observable<Trial> {
+  public getTrial<Trial>(id: number): Observable<Trial> {
     return this.http.get<Trial>(this.actionUrl + 'trials/' + id);
   }
-  getObservations<Observation>(patientId: number): Observable<Observation> {
+  public getObservations<Observation>(patientId: number): Observable<Observation> {
     console.log('GET; ' + this.actionUrl + 'observations?patientId=' + patientId);
     return this.http.get<Observation>(this.actionUrl + 'observations?patientId=' + patientId);
   }

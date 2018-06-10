@@ -9,22 +9,22 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./trial.component.css']
 })
 export class TrialComponent implements OnInit {
-  public isPatientCollapsed = true;
-  public isDoctorCollapsed = true;
-  public isAddingNewDoctorCollapsed = true;
-  public isAddingPatientCollapsed = true;
-  public isAdditionalInfoCollapsed = true;
-  public isGroupsCollapsed = true;
-  public trial: Trial;
-  public trialId: number;
+  protected isPatientCollapsed = true;
+  protected isDoctorCollapsed = true;
+  protected isAddingNewDoctorCollapsed = true;
+  protected isAddingPatientCollapsed = true;
+  protected isAdditionalInfoCollapsed = true;
+  protected isGroupsCollapsed = true;
+  protected trial: Trial;
+  private trialId: number;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
-  getTrial(): void {
+  protected getTrial(): void {
     this.dataService.getTrial<Trial>(this.trialId).subscribe((trial: Trial) => {this.trial = trial; console.log(this.trial); });
   }
 
-  getTrialId(): void {
+  private getTrialId(): void {
     this.trialId = +this.route.snapshot.paramMap.get('id');
   }
 

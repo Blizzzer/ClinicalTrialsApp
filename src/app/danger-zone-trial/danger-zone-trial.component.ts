@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DataService} from '../data.service';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-danger-zone-trial',
@@ -9,24 +8,23 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./danger-zone-trial.component.css']
 })
 export class DangerZoneTrialComponent implements OnInit {
-  closeResult: string;
   private trialId: number;
-  constructor(private dataService: DataService, private route: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getTrialId();
   }
 
-  nextPhase(): void {
+  protected nextPhase(): void {
     this.dataService.nextPhase(this.trialId);
     window.location.reload();
   }
-  setArchive(): void {
+  protected setArchive(): void {
     this.dataService.setArchive(this.trialId);
      window.location.reload();
   }
 
-  getTrialId(): void {
+  private getTrialId(): void {
     this.trialId = +this.route.snapshot.paramMap.get('id');
   }
 

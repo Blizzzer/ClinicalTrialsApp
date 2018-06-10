@@ -12,7 +12,7 @@
 <div id="addingTrial" [ngbCollapse]="isAddingTrialCollapsed">
   <div class="jumbotron">
 
-    <app-add-trial></app-add-trial>
+    <app-add-trial (toggle)="isAddingTrialCollapsed = !isAddingTrialCollapsed;" (added)="getTrials();"></app-add-trial>
   </div>
 </div>
 <div class="jumbotron">

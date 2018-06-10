@@ -9,8 +9,8 @@ import {DataService} from '../data.service';
   styleUrls: ['./dosages.component.css']
 })
 export class DosagesComponent implements OnInit {
-  dosages: Dosage[];
-  patientId: number;
+  protected dosages: Dosage[];
+  private patientId: number;
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,10 +18,10 @@ export class DosagesComponent implements OnInit {
     this.getDosages();
   }
 
-  getPatientID(): void {
+  private getPatientID(): void {
     this.patientId = +this.route.snapshot.paramMap.get('id');
   }
-  getDosages(): void {
+  public getDosages(): void {
     this.dataService.getDosages<Dosage[]>(this.patientId).subscribe((dosages: Dosage[]) => this.dosages = dosages);
   }
 

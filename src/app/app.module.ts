@@ -9,13 +9,11 @@ import { AppComponent } from './app.component';
 import { TrialsComponent } from './trials/trials.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { TrialComponent } from './trial/trial.component';
-import { DoctorComponent } from './doctor/doctor.component';
 import { PatientComponent } from './patient/patient.component';
 import { PatientsComponent } from './patients/patients.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import {DataService} from './data.service';
 import { ObservationsComponent } from './observations/observations.component';
-import { ObservationComponent } from './observation/observation.component';
 import { AddNewDoctorComponent } from './add-new-doctor/add-new-doctor.component';
 import {Configuration} from './constants';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
@@ -32,12 +30,10 @@ import { PasswordInputComponent } from './password-input/password-input.componen
     AppComponent,
     TrialsComponent,
     TrialComponent,
-    DoctorComponent,
     PatientComponent,
     PatientsComponent,
     DoctorsComponent,
     ObservationsComponent,
-    ObservationComponent,
     AddNewDoctorComponent,
     AddNewPatientComponent,
     AddTrialComponent,

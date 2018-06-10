@@ -8,12 +8,12 @@ import {Trial} from '../DataObjects/Trial';
   styleUrls: ['./trials.component.css']
 })
 export class TrialsComponent implements OnInit {
-  trials: Trial[];
-  showArchived = false;
-  isAddingTrialCollapsed = true;
+  protected trials: Trial[];
+  protected showArchived = false;
+  protected isAddingTrialCollapsed = true;
   constructor(private dataService: DataService) {
   }
-  getTrials(): void {
+  protected getTrials(): void {
     if (this.showArchived) {
       this.dataService.getTrials<Trial[]>(1).subscribe((data: Trial[]) => {
         this.trials = data;
@@ -26,7 +26,7 @@ export class TrialsComponent implements OnInit {
       });
     }
   }
-  onClick() {
+  protected onClick() {
     this.showArchived = !this.showArchived;
     this.getTrials();
   }

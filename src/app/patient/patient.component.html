@@ -1,10 +1,9 @@
-<h1><div>Name: {{patient.name}}</div></h1>
-<h3><div>Surname: {{patient.surname}}</div></h3>
-<h3><div>Current Dosage: {{patient.currentDosage}}</div></h3>
-<h3><div>SSN: {{patient.ssn}}</div></h3>
-<h3><div>Birth Date: {{patient.birthDate}}</div></h3>
-<h3><div>Participating in phase {{patient.phase}} of trial</div></h3>
-<h3><div>Patient from group {{patient.group}}l</div></h3>
+<div style="text-align: center"><h1><div>{{patient.name}} {{patient.surname}}</div></h1>
+  <h4><div>SSN: <span style="font-style: italic">{{patient.ssn}}</span></div></h4>
+  <h4><div>Current Dosage: <span style="font-style: italic">{{patient.currentDosage}}</span></div></h4>
+  <h4><div>Birth Date: <span style="font-style: italic">{{patient.birthDate}}</span></div></h4>
+  <h4><div style="font-style: italic">Participant of {{patient.phase}} phase of trial</div></h4>
+  <h4><div style="font-style: italic">Patient from group {{patientGroup}}</div></h4></div>
 
 
 <div id="Lists" class="btn-group" role="group" aria-label="List buttons">
@@ -37,7 +36,7 @@
 <div id="addingDosageCollapse" [ngbCollapse]="isAddingDosageCollapsed">
   <div class="card">
     <div class="card-body">
-      <app-add-new-dosage></app-add-new-dosage>
+      <app-add-new-dosage [dosagesList]="dosagesList" (toggle)="isAddingDosageCollapsed = !isAddingDosageCollapsed; getPatient();"></app-add-new-dosage>
     </div>
   </div>
 </div>
@@ -45,7 +44,7 @@
 <div id="addingObservationCollapse" [ngbCollapse]="isAddingObservationCollapsed">
   <div class="card">
     <div class="card-body">
-      <app-add-new-observation></app-add-new-observation>
+      <app-add-new-observation [observationsList]="observationsList" (toggle)="isAddingObservationCollapsed = !isAddingObservationCollapsed"></app-add-new-observation>
     </div>
   </div>
 </div>
@@ -53,7 +52,7 @@
 <div id="dosagesCollapse" [ngbCollapse]="isDosagesCollapsed">
   <div class="card">
     <div class="card-body">
-      <app-dosages></app-dosages>
+      <app-dosages #dosagesList ></app-dosages>
     </div>
   </div>
 </div>
@@ -62,7 +61,7 @@
 <div id="observationsCollapse" [ngbCollapse]="isObservationsCollapsed">
   <div class="card">
     <div class="card-body">
-      <app-observations></app-observations>
+      <app-observations #observationsList></app-observations>
     </div>
   </div>
 </div>
